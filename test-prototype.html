@@ -1,0 +1,66 @@
+<script>
+/* 
+** let's craete a simple prototype function.
+*/
+function Graph() { // this is called constructor.
+  this.data = [];
+  console.log('constructor >> this will always be called');
+  this.printSomething(); // calling a method which is not available initially.
+}
+
+Graph.prototype.addData = function(value) { // creating a new method to add values to data property.
+    this.data.push(value);
+};
+
+Graph.prototype.printSomething = function() { // another method to print something to the browser console. we already acalled this method too our constructor
+    console.log('printSomething');
+};
+
+
+/* 
+** let's use our Graph()
+** test case A
+*/
+var g = new Graph(); // creating a new instanse of Graph() to g variable. 
+g.addData('a new data') // adding new data to data property of a. remember, it will not touch the original Graph().
+
+var x = new Graph(); // creating a new instanse of Graph() to x variable to test the above statement. 
+
+// let's console the data property of g and x.
+console.log(g.data);
+console.log(x.data);
+
+
+/* 
+** now we want to add additional function/ method to the Graph() from another script or addon.
+** test case B
+*/
+Graph.prototype.test = function() {
+    console.log('yaay! i\'m test.');
+};
+
+// let's see which one recieves that additional function.
+g.test();
+x.test();
+
+
+/* 
+** now we want to overwrite the old test method.
+** test case C
+*/
+Graph.prototype.test = function() {
+    console.log('hey, i\'m the new test.');
+};
+
+// let's see it this works or not.
+g.test();
+x.test();
+
+
+/* 
+** now let's console the original Graph.
+** test case D
+*/
+console.log(new Graph()); // check __proto__ property here on your console to find out the available properties of the original Graph() after all of above codes.
+// console.log(Graph()); // uncomment this line and see the differences between Graph() and new Graph().
+</script>
