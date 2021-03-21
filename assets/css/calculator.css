@@ -66,18 +66,41 @@ body {
     transform: translateY(-50%);
 }
 
+.calc--btns {
+    display: flex;
+    padding-top: 12px;
+}
+
 .calc--nums {
-	display: flex;
+	display: inline-flex;
 	flex-wrap: wrap;
+	flex: 0 0 270px;
 	gap: 5px;
 }
 
-.calc--num {
-	flex: 0 0 32.4%;
+.calc--num,
+.calc--operator {
 	padding: 9px 0px 10px;
 	color: #202124;
 	background-color: #f1f3f4;
 	border: 1px solid #f1f3f4;
 	border-radius: 4px;
 	cursor: pointer;
+	outline: 0;
+}
+
+.calc--num {
+    flex: 0 0 31.33%;
+}
+
+.calc--operators {
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+
+.calc--operator {
+    background-color: #dadce0;
+    border-color: #dadce0;
 }
